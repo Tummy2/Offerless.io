@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useToast } from '@/hooks/use-toast'
-import { Eye, EyeOff, Github } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
 
 export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -166,8 +166,7 @@ export default function SignInPage() {
             onClick={signInWithGoogle}
             disabled={isLoading}
           >
-            <Github className="mr-2 h-4 w-4" />
-            Google
+            🌐 Google
           </Button>
 
           <div className="text-center text-sm">
