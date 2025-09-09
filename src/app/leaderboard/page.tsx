@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import { LeaderboardTable } from '@/components/leaderboard/leaderboard-table'
-import { NavBar } from '@/components/layout/nav-bar'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default async function LeaderboardPage() {
@@ -14,7 +14,24 @@ export default async function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <NavBar />
+      {/* Simple Header */}
+      <header className="border-b bg-background/95 backdrop-blur">
+        <div className="container flex h-14 items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-purple-600 bg-clip-text text-transparent">
+              Rejected.gg
+            </span>
+          </Link>
+          <nav className="flex items-center space-x-4">
+            <Link href="/" className="text-sm font-medium">
+              Dashboard
+            </Link>
+            <Button variant="outline" size="sm">
+              Sign Out
+            </Button>
+          </nav>
+        </div>
+      </header>
       
       <main className="container mx-auto py-8 space-y-8">
         <div className="text-center space-y-4">
@@ -30,11 +47,13 @@ export default async function LeaderboardPage() {
             <CardTitle>Global Rankings</CardTitle>
             <CardDescription>
               Rankings are based on total applications submitted. 
-              Keep applying to climb the leaderboard!
+              Set up your database to see the leaderboard!
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <LeaderboardTable />
+          <CardContent className="text-center py-8">
+            <p className="text-muted-foreground">
+              Complete the database setup to view leaderboard rankings.
+            </p>
           </CardContent>
         </Card>
       </main>
