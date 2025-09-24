@@ -5,18 +5,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useToast } from '@/hooks/use-toast'
 import { ThemeToggle } from '@/components/layout/theme-toggle'
-import { LogOut, Settings, Trophy, User } from 'lucide-react'
+import { LogOut, Trophy, User } from 'lucide-react'
 
 export function NavBar() {
   const [isSigningOut, setIsSigningOut] = useState(false)
@@ -49,8 +40,8 @@ export function NavBar() {
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-purple-600 bg-clip-text text-transparent">
-              Rejected.gg
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Offerless
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -75,46 +66,15 @@ export function NavBar() {
           <nav className="flex items-center space-x-2">
             <ThemeToggle />
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="" alt="User" />
-                    <AvatarFallback>
-                      <User className="h-4 w-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">User</p>
-                    <p className="text-xs leading-none text-muted-foreground">
-                      user@example.com
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/settings">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/leaderboard">
-                    <Trophy className="mr-2 h-4 w-4" />
-                    <span>Leaderboard</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleSignOut} disabled={isSigningOut}>
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>{isSigningOut ? 'Signing out...' : 'Sign out'}</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleSignOut}
+              disabled={isSigningOut}
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              {isSigningOut ? 'Signing out...' : 'Sign out'}
+            </Button>
           </nav>
         </div>
       </div>
