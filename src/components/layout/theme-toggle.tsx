@@ -10,9 +10,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button variant="outline" size="sm" className="w-[100px]">
+        <Sun className="h-4 w-4" />
+      </Button>
+    )
+  }
 
   return (
     <Select value={theme} onValueChange={setTheme}>
