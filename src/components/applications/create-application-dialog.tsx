@@ -107,6 +107,16 @@ export function CreateApplicationDialog({
   const onSubmit = async (data: ApplicationInput) => {
     setIsSubmitting(true)
     try {
+      // Ensure required fields are set
+      if (!data.status) {
+        toast({
+          title: 'Error', 
+          description: 'Please select a status',
+          variant: 'destructive',
+        })
+        return
+      }
+      
       await mutation.mutateAsync(data)
     } finally {
       setIsSubmitting(false)
