@@ -90,8 +90,15 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json()
     
+    // Transform the data before validation
+    const transformedData = {
+      ...body,
+      applied_at: new Date(body.applied_at),
+      salary_amount: body.salary_amount ? Number(body.salary_amount) : null,
+    }
+    
     // Validate input
-    const validatedData = applicationSchema.parse(body)
+    const validatedData = applicationSchema.parse(transformedData)
 
     const { data: application, error } = await supabase
       .from('applications')
