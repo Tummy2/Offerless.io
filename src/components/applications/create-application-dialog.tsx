@@ -24,7 +24,6 @@ import {
 } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { applicationSchema, type ApplicationInput } from '@/lib/validations'
-import { LOCATION_SUGGESTIONS } from '@/lib/utils'
 
 interface CreateApplicationDialogProps {
   open: boolean
@@ -44,7 +43,8 @@ async function createApplication(data: ApplicationInput) {
   })
 
   if (!response.ok) {
-    throw new Error('Failed to create application')
+    const error = await response.json()
+    throw new Error(error.error || 'Failed to create application')
   }
 
   return response.json()
@@ -107,7 +107,7 @@ export function CreateApplicationDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add New Application</DialogTitle>
           <DialogDescription>
@@ -182,11 +182,11 @@ export function CreateApplicationDialog({
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="applied">Applied</SelectItem>
-                  <SelectItem value="interviewing">Interviewing</SelectItem>
-                  <SelectItem value="rejected">Rejected</SelectItem>
-                  <SelectItem value="ghosted">Ghosted</SelectItem>
-                  <SelectItem value="offer">Offer</SelectItem>
+                  <SelectItem value="applied">📝 Applied</SelectItem>
+                  <SelectItem value="interviewing">🗣️ Interviewing</SelectItem>
+                  <SelectItem value="rejected">❌ Rejected</SelectItem>
+                  <SelectItem value="ghosted">👻 Ghosted</SelectItem>
+                  <SelectItem value="offer">🎉 Offer</SelectItem>
                 </SelectContent>
               </Select>
               {errors.status && (
@@ -207,8 +207,8 @@ export function CreateApplicationDialog({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="onsite">On-site</SelectItem>
-                  <SelectItem value="remote">Remote</SelectItem>
+                  <SelectItem value="onsite">🏢 On-site</SelectItem>
+                  <SelectItem value="remote">🌍 Remote</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -235,8 +235,8 @@ export function CreateApplicationDialog({
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="hourly">Hourly</SelectItem>
-                  <SelectItem value="salary">Annual Salary</SelectItem>
+                  <SelectItem value="hourly">💰 Hourly</SelectItem>
+                  <SelectItem value="salary">💼 Annual Salary</SelectItem>
                 </SelectContent>
               </Select>
             </div>
