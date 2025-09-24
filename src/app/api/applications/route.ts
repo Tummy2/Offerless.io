@@ -16,11 +16,12 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url)
     const page = parseInt(searchParams.get('page') || '1')
-    const pageSize = parseInt(searchParams.get('pageSize') || '10')
+    const pageSize = parseInt(searchParams.get('pageSize') || '100')
     const sortBy = searchParams.get('sortBy') || 'applied_at'
     const sortOrder = searchParams.get('sortOrder') || 'desc'
     const search = searchParams.get('q')
     const status = searchParams.get('status')
+    const locationKind = searchParams.get('locationKind')
     const from = searchParams.get('from')
     const to = searchParams.get('to')
 
@@ -39,6 +40,10 @@ export async function GET(request: NextRequest) {
     if (status) {
       const statuses = status.split(',')
       query = query.in('status', statuses)
+    }
+
+    if (locationKind) {
+      query = query.eq('location_kind', locationKind)
     }
 
     if (from) {

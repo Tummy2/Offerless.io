@@ -16,7 +16,16 @@ export async function PATCH(
     }
 
     const body = await request.json()
-    const validatedData = applicationSchema.parse(body)
+    
+    // Transform the data before validation
+    const transformedData = {
+      ...body,
+      applied_at: new Date(body.applied_at),
+      salary_amount: body.salary_amount ? Number(body.salary_amount) : null,
+    }
+    
+    // Validate input
+    const validatedData = applicationSchema.parse(transformedData)
 
     const { data: application, error } = await supabase
       .from('applications')
@@ -37,6 +46,7 @@ export async function PATCH(
       .single()
 
     if (error) {
+      console.error('Database error:', error)
       return NextResponse.json({ error: 'Failed to update application' }, { status: 500 })
     }
 
@@ -45,6 +55,7 @@ export async function PATCH(
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: 'Validation error', details: error.errors }, { status: 400 })
     }
+    console.error('Server error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
@@ -68,11 +79,13 @@ export async function DELETE(
       .eq('user_id', user.id)
 
     if (error) {
+      console.error('Database error:', error)
       return NextResponse.json({ error: 'Failed to delete application' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
   } catch (error) {
+    console.error('Server error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
