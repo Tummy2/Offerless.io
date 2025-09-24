@@ -1,4 +1,4 @@
-# Rejected.gg - Job Application Tracker
+# Offerless - Job Application Tracker
 
 A gamified job application tracker built with Next.js 14, Supabase, and TypeScript.
 
@@ -15,7 +15,7 @@ npm install
 1. Go to [supabase.com](https://supabase.com) and sign up/sign in
 2. Click "New Project" 
 3. Choose your organization
-4. Enter project name: "rejected-gg" (or whatever you prefer)
+4. Enter project name: "offerless" (or whatever you prefer)
 5. Enter a secure database password (save this!)
 6. Choose a region closest to you
 7. Click "Create new project" (takes ~2 minutes)
@@ -82,15 +82,6 @@ Visit [http://localhost:3000](http://localhost:3000)
    - Go to Authentication > Providers
    - Enable Google provider
    - Add your Client ID and Client Secret
-
-3. **For Local Development** (optional):
-   - Update `supabase/config.toml`:
-   ```toml
-   [auth.external.google]
-   enabled = true
-   client_id = "your_google_client_id"
-   secret = "your_google_client_secret"
-   ```
 
 ## 🎯 Features
 

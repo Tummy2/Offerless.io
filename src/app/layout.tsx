@@ -7,12 +7,12 @@ import { Providers } from '@/components/providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Rejected.gg - Gamified Job Application Tracker',
+  title: 'Offerless - Job Application Tracker',
   description: 'Track your job applications, compete on the leaderboard, and gamify your job search journey.',
   keywords: ['job search', 'application tracker', 'career', 'leaderboard', 'gamification'],
-  authors: [{ name: 'Rejected.gg' }],
+  authors: [{ name: 'Offerless' }],
   openGraph: {
-    title: 'Rejected.gg - Gamified Job Application Tracker',
+    title: 'Offerless - Job Application Tracker',
     description: 'Track your job applications, compete on the leaderboard, and gamify your job search journey.',
     type: 'website',
     locale: 'en_US',

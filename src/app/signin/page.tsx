@@ -93,7 +93,7 @@ export default function SignInPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome back to Rejected.gg
+            Welcome back to Offerless
           </CardTitle>
           <CardDescription className="text-center">
             Sign in to your account to continue tracking your job applications

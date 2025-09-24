@@ -18,8 +18,8 @@ export default async function LeaderboardPage() {
       <header className="border-b bg-background/95 backdrop-blur">
         <div className="container flex h-14 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-purple-600 bg-clip-text text-transparent">
-              Rejected.gg
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Offerless
             </span>
           </Link>
           <nav className="flex items-center space-x-4">
@@ -47,12 +47,12 @@ export default async function LeaderboardPage() {
             <CardTitle>Global Rankings</CardTitle>
             <CardDescription>
               Rankings are based on total applications submitted. 
-              Set up your database to see the leaderboard!
+              Add some applications to see your position!
             </CardDescription>
           </CardHeader>
           <CardContent className="text-center py-8">
             <p className="text-muted-foreground">
-              Complete the database setup to view leaderboard rankings.
+              Start adding job applications to compete on the leaderboard.
             </p>
           </CardContent>
         </Card>
