@@ -37,8 +37,15 @@ async function createApplication(data: ApplicationInput) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      ...data,
+      company: data.company,
+      job_title: data.job_title,
       applied_at: data.applied_at.toISOString().split('T')[0],
+      status: data.status,
+      company_url: data.company_url,
+      salary_amount: data.salary_amount || null,
+      salary_type: data.salary_type || null,
+      location_label: data.location_label || null,
+      location_kind: data.location_kind,
     }),
   })
 
