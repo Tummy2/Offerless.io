@@ -77,6 +77,9 @@ export function CreateApplicationDialog({
     defaultValues: {
       location_kind: 'onsite',
       applied_at: new Date(),
+      salary_amount: undefined,
+      salary_type: undefined,
+      location_label: undefined,
     },
   })
 
