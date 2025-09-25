@@ -214,7 +214,7 @@ export function ApplicationsTable() {
         </Select>
 
         {/* Clear Filters */}
-        {(statusFilter.length > 0 || locationKindFilter) && (
+        {(statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all')) && (
           <Button 
             variant="ghost" 
             onClick={() => {
