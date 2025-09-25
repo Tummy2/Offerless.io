@@ -268,7 +268,7 @@ export function EditApplicationDialog({
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">None</SelectItem>
+                  <SelectItem value="none">None</SelectItem>
                   <SelectItem value="hourly">💰 Hourly</SelectItem>
                   <SelectItem value="salary">💼 Annual Salary</SelectItem>
                 </SelectContent>
