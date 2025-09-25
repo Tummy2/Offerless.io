@@ -351,7 +351,7 @@ export function ApplicationsTable() {
                         onClick={() => {
                           setSearchTerm('')
                           setStatusFilter([])
-                          setLocationKindFilter('')
+                          setLocationKindFilter('all')
                         }}
                         className="h-auto p-0"
                       >
