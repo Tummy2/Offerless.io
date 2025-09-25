@@ -207,7 +207,7 @@ export function ApplicationsTable() {
             <SelectValue placeholder="Location" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All</SelectItem>
+            <SelectItem value="all">All</SelectItem>
             <SelectItem value="onsite">On-site</SelectItem>
             <SelectItem value="remote">Remote</SelectItem>
           </SelectContent>
