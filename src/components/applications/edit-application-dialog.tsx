@@ -260,8 +260,8 @@ export function EditApplicationDialog({
             <div className="space-y-2">
               <Label htmlFor="salary_type">Salary Type</Label>
               <Select
-                value={watch('salary_type') || ''}
-                onValueChange={(value) => setValue('salary_type', value as any)}
+                value={watch('salary_type') || 'none'}
+                onValueChange={(value) => setValue('salary_type', value === 'none' ? null : value as any)}
                 disabled={isSubmitting}
               >
                 <SelectTrigger>
