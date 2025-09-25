@@ -219,7 +219,7 @@ export function ApplicationsTable() {
             variant="ghost" 
             onClick={() => {
               setStatusFilter([])
-              setLocationKindFilter('')
+              setLocationKindFilter('all')
             }}
           >
             Clear Filters
