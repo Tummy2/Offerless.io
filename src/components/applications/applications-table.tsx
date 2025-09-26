@@ -375,6 +375,7 @@ export function ApplicationsTable() {
                           setSearchTerm('')
                           setStatusFilter([])
                           setLocationKindFilter('all')
+                          setLocationFilter('')
                         }}
                         className="h-auto p-0"
                       >
