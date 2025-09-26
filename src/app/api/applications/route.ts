@@ -61,23 +61,64 @@ export async function GET(request: NextRequest) {
 
     // Apply sorting
     const ascending = sortOrder === 'asc'
-    query = query.order(sortBy, { ascending })
-
-    // Apply pagination
-    const offset = (page - 1) * pageSize
-    query = query.range(offset, offset + pageSize - 1)
-
-    const { data: applications, error } = await query
-
-    if (error) {
-      console.error('Database error:', error)
-      return NextResponse.json(
-        { error: 'Failed to fetch applications' },
-        { status: 500 }
-      )
+    
+    if (sortBy === 'salary') {
+      // For salary sorting, we need to fetch data first and sort in memory
+      // due to the conversion logic (hourly to annual)
+      const { data: allApplications, error: fetchError } = await query
+      
+      if (fetchError) {
+        console.error('Database error:', fetchError)
+        return NextResponse.json(
+          { error: 'Failed to fetch applications' },
+          { status: 500 }
+        )
+      }
+      
+      // Sort by converted annual salary
+      const sortedApplications = allApplications?.sort((a, b) => {
+        const getSalaryForComparison = (app: any) => {
+          if (!app.salary_amount || !app.salary_type) return 0
+          
+          if (app.salary_type === 'salary') {
+            return app.salary_amount
+          } else if (app.salary_type === 'hourly') {
+            return app.salary_amount * 40 * 52 // Convert hourly to annual
+          }
+          return 0
+        }
+        
+        const salaryA = getSalaryForComparison(a)
+        const salaryB = getSalaryForComparison(b)
+        
+        return ascending ? salaryA - salaryB : salaryB - salaryA
+      }) || []
+      
+      // Apply pagination after sorting
+      const offset = (page - 1) * pageSize
+      const paginatedApplications = sortedApplications.slice(offset, offset + pageSize)
+      
+      return NextResponse.json(paginatedApplications)
+    } else {
+      // Regular sorting for other fields
+      query = query.order(sortBy, { ascending })
+      
+      // Apply pagination
+      const offset = (page - 1) * pageSize
+      query = query.range(offset, offset + pageSize - 1)
+      
+      const { data: applications, error } = await query
+      
+      if (error) {
+        console.error('Database error:', error)
+        return NextResponse.json(
+          { error: 'Failed to fetch applications' },
+          { status: 500 }
+        )
+      }
+      
+      return NextResponse.json(applications)
     }
-
-    return NextResponse.json(applications)
   } catch (error) {
     console.error('Server error:', error)
     return NextResponse.json(
