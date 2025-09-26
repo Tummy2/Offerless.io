@@ -48,6 +48,7 @@ async function fetchApplications(params?: {
   if (params?.search) searchParams.append('q', params.search)
   if (params?.status?.length) searchParams.append('status', params.status.join(','))
   if (params?.locationKind && params.locationKind !== 'all') searchParams.append('locationKind', params.locationKind)
+  if (params?.location) searchParams.append('location', params.location)  // Add location parameter
   if (params?.sortBy) searchParams.append('sortBy', params.sortBy)
   if (params?.sortOrder) searchParams.append('sortOrder', params.sortOrder)
   
