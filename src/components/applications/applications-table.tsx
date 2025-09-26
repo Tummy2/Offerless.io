@@ -349,16 +349,18 @@ export function ApplicationsTable() {
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" asChild>
-                        <a
-                          href={application.company_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title="View job posting"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
+                      {application.company_url && (
+                        <Button variant="ghost" size="sm" asChild>
+                          <a
+                            href={application.company_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="View job posting"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </TableCell>
                 </TableRow>
