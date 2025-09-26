@@ -39,6 +39,7 @@ async function fetchApplications(params?: {
   search?: string
   status?: string[]
   locationKind?: string
+  location?: string  // Add location parameter
   sortBy?: string
   sortOrder?: string
 }): Promise<Application[]> {
