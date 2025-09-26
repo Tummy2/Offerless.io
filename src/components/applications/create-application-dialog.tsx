@@ -165,11 +165,11 @@ export function CreateApplicationDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="company_url">Company URL *</Label>
+            <Label htmlFor="company_url">Company URL</Label>
             <Input
               id="company_url"
               type="url"
-              placeholder="https://company.com/careers/job-id"
+              placeholder="https://company.com/careers/job-id (optional)"
               {...register('company_url')}
               disabled={isSubmitting}
             />
