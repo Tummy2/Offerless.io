@@ -17,7 +17,9 @@ export const applicationSchema = z.object({
     .url('Must be a valid URL')
     .refine((url) => url.startsWith('http://') || url.startsWith('https://'), {
       message: 'URL must start with http:// or https://',
-    }),
+    })
+    .optional()
+    .or(z.literal('')),
   salary_amount: z.number()
     .positive('Salary must be positive')
     .optional()
