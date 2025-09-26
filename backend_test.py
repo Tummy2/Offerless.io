@@ -564,6 +564,14 @@ class OfferlessAPITester:
         # Auth endpoint tests
         self.test_auth_signout()
         
+        # NEW FEATURES TESTING
+        print("\n🆕 Testing New Features:")
+        print("-" * 30)
+        self.test_salary_sorting_feature()
+        self.test_location_filtering_feature()
+        self.test_optional_company_url_validation()
+        self.test_combined_filters_integration()
+        
         # Validation and error handling tests
         self.test_validation_errors()
         self.test_error_handling()
