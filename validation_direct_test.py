@@ -29,7 +29,7 @@ class DirectValidationTester:
         if details and not success:
             print(f"   Details: {details}")
 
-    def test_validation_with_malformed_json(self):
+    def test_malformed_json_handling(self):
         """Test that malformed JSON is handled before validation"""
         try:
             response = self.session.post(
