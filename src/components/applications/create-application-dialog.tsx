@@ -236,10 +236,9 @@ export function CreateApplicationDialog({
 
             <div className="space-y-2">
               <Label htmlFor="location_label">Location</Label>
-              <Input
-                id="location_label"
-                placeholder="e.g. San Francisco, CA"
-                {...register('location_label')}
+              <LocationSearchInput
+                value={watch('location_label') || ''}
+                onChange={(value) => setValue('location_label', value)}
                 disabled={isSubmitting}
               />
             </div>
