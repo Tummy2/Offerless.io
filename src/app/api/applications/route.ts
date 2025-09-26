@@ -43,8 +43,12 @@ export async function GET(request: NextRequest) {
       query = query.in('status', statuses)
     }
 
-    if (locationKind) {
+    if (locationKind && locationKind !== 'all') {
       query = query.eq('location_kind', locationKind)
+    }
+
+    if (location) {
+      query = query.ilike('location_label', `%${location}%`)
     }
 
     if (from) {
