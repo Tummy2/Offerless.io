@@ -366,7 +366,7 @@ export function ApplicationsTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={7} className="h-24 text-center">
-                  {searchTerm || statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') ? (
+                  {searchTerm || statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') || locationFilter ? (
                     <div className="space-y-2">
                       <p>No applications found matching your filters.</p>
                       <Button 
