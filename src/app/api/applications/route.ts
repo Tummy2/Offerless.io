@@ -22,6 +22,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('q')
     const status = searchParams.get('status')
     const locationKind = searchParams.get('locationKind')
+    const location = searchParams.get('location')  // New location filter
     const from = searchParams.get('from')
     const to = searchParams.get('to')
 
