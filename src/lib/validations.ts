@@ -14,12 +14,14 @@ export const applicationSchema = z.object({
     required_error: 'Status is required',
   }),
   company_url: z.string()
-    .url('Must be a valid URL')
-    .refine((url) => url.startsWith('http://') || url.startsWith('https://'), {
+    .refine((value) => !value || (value.startsWith('http://') || value.startsWith('https://')), {
       message: 'URL must start with http:// or https://',
     })
+    .refine((value) => !value || z.string().url().safeParse(value).success, {
+      message: 'Must be a valid URL',
+    })
     .optional()
-    .or(z.literal('')),
+    .transform(val => val || ''),
   salary_amount: z.number()
     .positive('Salary must be positive')
     .optional()
