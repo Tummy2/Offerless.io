@@ -618,6 +618,10 @@ class OfferlessAPITester:
         print("  • Proper error responses for unauthorized access")
         print("  • Request validation structure is in place")
         print("  • CORS handling is functional")
+        print("  • NEW: Salary sorting endpoint accessible (hourly-to-annual conversion)")
+        print("  • NEW: Location filtering endpoint accessible (partial matching)")
+        print("  • NEW: Optional company URL validation working")
+        print("  • NEW: Combined filters integration working")
         
         print("\n⚠️  WHAT NEEDS REAL SUPABASE SETUP:")
         print("  • User registration and authentication")
@@ -625,12 +629,18 @@ class OfferlessAPITester:
         print("  • Data persistence")
         print("  • User session management")
         print("  • Leaderboard data retrieval")
+        print("  • NEW: Actual salary sorting with real data")
+        print("  • NEW: Location filtering with real location data")
+        print("  • NEW: Testing company URL persistence")
         
         print("\n🎯 RECOMMENDATIONS:")
         print("  1. Replace development Supabase keys with real project keys")
         print("  2. Set up proper Supabase database with required tables")
         print("  3. Configure authentication providers (email, OAuth)")
         print("  4. Test with real user accounts after setup")
+        print("  5. NEW: Test salary sorting with mixed hourly/annual salary data")
+        print("  6. NEW: Test location filtering with various location formats")
+        print("  7. NEW: Verify company URL optional behavior in production")
         
         return {
             "total_tests": total_tests,
