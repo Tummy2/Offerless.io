@@ -183,6 +183,16 @@ export function ApplicationsTable() {
           />
         </div>
         
+        {/* Location Filter Input */}
+        <div className="relative">
+          <Input 
+            placeholder="Filter by location..." 
+            className="w-48"
+            value={locationFilter}
+            onChange={(e) => setLocationFilter(e.target.value)}
+          />
+        </div>
+        
         {/* Status Filter */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
