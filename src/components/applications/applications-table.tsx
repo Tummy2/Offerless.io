@@ -268,7 +268,14 @@ export function ApplicationsTable() {
                   Status {getSortIcon('status')}
                 </div>
               </TableHead>
-              <TableHead>Salary</TableHead>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleSort('salary')}
+              >
+                <div className="flex items-center">
+                  Salary {getSortIcon('salary')}
+                </div>
+              </TableHead>
               <TableHead>Location</TableHead>
               <TableHead className="w-[120px]">Actions</TableHead>
             </TableRow>
