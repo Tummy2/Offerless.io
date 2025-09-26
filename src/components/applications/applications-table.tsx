@@ -83,6 +83,7 @@ export function ApplicationsTable() {
       search: searchTerm, 
       status: statusFilter, 
       locationKind: locationKindFilter,
+      location: locationFilter,  // Add location filter
       sortBy,
       sortOrder 
     }],
@@ -90,6 +91,7 @@ export function ApplicationsTable() {
       search: searchTerm,
       status: statusFilter,
       locationKind: locationKindFilter,
+      location: locationFilter,  // Add location filter
       sortBy,
       sortOrder
     }),
