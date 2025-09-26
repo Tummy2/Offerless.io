@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { applicationSchema, type ApplicationInput } from '@/lib/validations'
+import { LocationSearchInput } from './location-search-input'
 
 interface CreateApplicationDialogProps {
   open: boolean
