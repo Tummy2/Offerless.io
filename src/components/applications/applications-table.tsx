@@ -102,7 +102,7 @@ export function ApplicationsTable() {
   
   const { data: applications = [], isLoading, error } = useQuery({
     queryKey: ['applications', { 
-      search: searchTerm, 
+      search: debouncedSearchTerm, 
       status: statusFilter, 
       locationKind: locationKindFilter,
       location: debouncedLocationFilter,  // Use debounced location filter
@@ -110,7 +110,7 @@ export function ApplicationsTable() {
       sortOrder 
     }],
     queryFn: () => fetchApplications({
-      search: searchTerm,
+      search: debouncedSearchTerm,
       status: statusFilter,
       locationKind: locationKindFilter,
       location: debouncedLocationFilter,  // Use debounced location filter
