@@ -91,6 +91,15 @@ export function ApplicationsTable() {
     return () => clearTimeout(timeoutId)
   }, [locationFilter])
   
+  // Debounce search term to avoid API calls on every keystroke
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 500) // 500ms delay
+    
+    return () => clearTimeout(timeoutId)
+  }, [searchTerm])
+  
   const { data: applications = [], isLoading, error } = useQuery({
     queryKey: ['applications', { 
       search: searchTerm, 
