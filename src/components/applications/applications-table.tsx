@@ -70,6 +70,7 @@ async function deleteApplication(id: string): Promise<void> {
 
 export function ApplicationsTable() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<string[]>([])
   const [locationKindFilter, setLocationKindFilter] = useState<string>('all')
   const [locationFilter, setLocationFilter] = useState<string>('') // New location filter
