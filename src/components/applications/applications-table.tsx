@@ -73,6 +73,7 @@ export function ApplicationsTable() {
   const [statusFilter, setStatusFilter] = useState<string[]>([])
   const [locationKindFilter, setLocationKindFilter] = useState<string>('all')
   const [locationFilter, setLocationFilter] = useState<string>('') // New location filter
+  const [debouncedLocationFilter, setDebouncedLocationFilter] = useState<string>('')
   const [sortBy, setSortBy] = useState('applied_at')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [editingApplication, setEditingApplication] = useState<Application | null>(null)
