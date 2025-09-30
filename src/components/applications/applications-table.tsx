@@ -22,7 +22,7 @@ import {
 import { formatDate, formatSalary, getStatusColor } from '@/lib/utils'
 import type { Application } from '@/types'
 import { ExternalLink, Search, Pencil, Trash2, Filter, SortAsc, SortDesc } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { EditApplicationDialog } from './edit-application-dialog'
 import { useToast } from '@/hooks/use-toast'
 import {
