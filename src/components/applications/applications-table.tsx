@@ -379,7 +379,7 @@ export function ApplicationsTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={7} className="h-24 text-center">
-                  {searchTerm || statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') || locationFilter ? (
+                  {searchTerm || statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') || debouncedLocationFilter ? (
                     <div className="space-y-2">
                       <p>No applications found matching your filters.</p>
                       <Button 
@@ -389,6 +389,7 @@ export function ApplicationsTable() {
                           setStatusFilter([])
                           setLocationKindFilter('all')
                           setLocationFilter('')
+                          setDebouncedLocationFilter('')
                         }}
                         className="h-auto p-0"
                       >
