@@ -239,13 +239,14 @@ export function ApplicationsTable() {
         </Select>
 
         {/* Clear Filters */}
-        {(statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') || locationFilter) && (
+        {(statusFilter.length > 0 || (locationKindFilter && locationKindFilter !== 'all') || debouncedLocationFilter) && (
           <Button 
             variant="ghost" 
             onClick={() => {
               setStatusFilter([])
               setLocationKindFilter('all')
               setLocationFilter('')
+              setDebouncedLocationFilter('') // Also clear debounced filter
             }}
           >
             Clear Filters
