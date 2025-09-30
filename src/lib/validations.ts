@@ -19,10 +19,21 @@ export const applicationSchema = z.object({
       message: 'URL must start with http:// or https://',
     })
   ]),
-  salary_amount: z.number()
-    .positive('Salary must be positive')
-    .optional()
-    .nullable(),
+  salary_amount: z.preprocess(
+    (val) => {
+      // Convert string to number, return null for empty strings
+      if (val === '' || val === null || val === undefined) return null
+      const num = Number(val)
+      return isNaN(num) ? undefined : num // undefined will trigger validation error
+    },
+    z.number({
+      required_error: "Please enter a valid number",
+      invalid_type_error: "Please enter a valid number"
+    })
+      .positive('Salary must be positive')
+      .optional()
+      .nullable()
+  ),
   salary_type: z.enum(['hourly', 'salary']).optional().nullable(),
   location_label: z.string()
     .max(120, 'Location must be less than 120 characters')
