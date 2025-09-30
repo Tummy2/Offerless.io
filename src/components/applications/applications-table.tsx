@@ -81,6 +81,15 @@ export function ApplicationsTable() {
   const { toast } = useToast()
   const queryClient = useQueryClient()
   
+  // Debounce location filter to avoid API calls on every keystroke
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedLocationFilter(locationFilter)
+    }, 500) // 500ms delay
+    
+    return () => clearTimeout(timeoutId)
+  }, [locationFilter])
+  
   const { data: applications = [], isLoading, error } = useQuery({
     queryKey: ['applications', { 
       search: searchTerm, 
