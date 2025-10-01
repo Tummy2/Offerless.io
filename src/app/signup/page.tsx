@@ -40,6 +40,7 @@ export default function SignUpPage() {
           data: {
             username: data.username,
           },
+          emailRedirectTo: undefined, // Disable email confirmation
         },
       })
 
@@ -52,7 +53,7 @@ export default function SignUpPage() {
       } else {
         toast({
           title: 'Success',
-          description: 'Please check your email to verify your account!',
+          description: 'Account created successfully! You can now sign in.',
         })
         router.push('/signin')
       }
