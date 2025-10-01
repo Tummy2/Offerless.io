@@ -17,12 +17,13 @@ export default async function LeaderboardPage() {
       <NavBar />
       
       <main className="container mx-auto py-8 space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">🏆 Leaderboard</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Compete with fellow job seekers and track your application progress. 
-            Only verified users appear on the leaderboard.
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight">🏆 Leaderboard</h1>
+            <p className="text-xl text-muted-foreground mt-2">
+              Compete with fellow job seekers and track your application progress
+            </p>
+          </div>
         </div>
 
         <Card>
