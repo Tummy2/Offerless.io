@@ -686,6 +686,8 @@ class OfferlessAPITester:
         print("\n🏆 Testing Leaderboard Functionality:")
         print("-" * 40)
         self.test_leaderboard_api_structure()
+        self.test_leaderboard_column_fix()
+        self.test_leaderboard_response_structure()
         self.test_leaderboard_ranking_logic_implementation()
         self.test_leaderboard_data_structure()
         
