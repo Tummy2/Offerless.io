@@ -39,7 +39,6 @@ export default function SignUpPage() {
         options: {
           data: {
             username: data.username,
-            display_name: data.display_name,
           },
         },
       })
@@ -106,20 +105,6 @@ export default function SignUpPage() {
               />
               {errors.username && (
                 <p className="text-sm text-red-500">{errors.username.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="display_name">Display Name (Optional)</Label>
-              <Input
-                id="display_name"
-                type="text"
-                placeholder="John Doe"
-                {...register('display_name')}
-                disabled={isLoading}
-              />
-              {errors.display_name && (
-                <p className="text-sm text-red-500">{errors.display_name.message}</p>
               )}
             </div>
             
