@@ -6,7 +6,6 @@ Tests that both dashboard and leaderboard pages use the same NavBar component
 
 import requests
 import sys
-from bs4 import BeautifulSoup
 
 class NavigationTester:
     def __init__(self, base_url: str = "http://localhost:3000"):
