@@ -1,7 +1,6 @@
--e
+-e 
 *.env
 *.env.*
-<<<<<<< HEAD
 node_modules/
 .next/
 .vercel/
@@ -9,9 +8,3 @@ dist/
 out/
 coverage/
 *.log
-=======
--e 
-# Environment files
-*.env
-*.env.*
->>>>>>> 99e2f696a2c28ebfe804b1f88aa4e89740bef521
