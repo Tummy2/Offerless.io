@@ -16,9 +16,8 @@ export async function GET(request: NextRequest) {
     const { data: profiles, error: profilesError } = await supabase
       .from('profiles')
       .select(`
-        user_id,
+        uuid,
         username,
-        display_name,
         applications (
           id,
           applied_at
@@ -51,9 +50,9 @@ export async function GET(request: NextRequest) {
       }).length
 
       return {
-        user_id: profile.user_id,
+        user_id: profile.uuid, // Use uuid as user_id for frontend compatibility
         username: profile.username,
-        display_name: profile.display_name,
+        display_name: profile.username, // Use username as display name
         total_applications: totalApplications,
         applications_last_30_days: applicationsLast30Days
       }
