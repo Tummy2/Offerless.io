@@ -21,8 +21,8 @@ export function StatsCards() {
 
   if (isLoading) {
     return (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        {Array.from({ length: 5 }).map((_, i) => (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        {Array.from({ length: 6 }).map((_, i) => (
           <Card key={i}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Loading...</CardTitle>
@@ -78,6 +78,13 @@ export function StatsCards() {
       color: 'text-red-600',
     },
     {
+      title: 'Ghosted',
+      value: stats.ghosted,
+      icon: getStatusIcon('ghosted'),
+      description: 'No response',
+      color: 'text-gray-600',
+    },
+    {
       title: 'Offers',
       value: stats.offer,
       icon: getStatusIcon('offer'),
@@ -87,7 +94,7 @@ export function StatsCards() {
   ]
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
       {statCards.map((stat) => (
         <Card key={stat.title}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
