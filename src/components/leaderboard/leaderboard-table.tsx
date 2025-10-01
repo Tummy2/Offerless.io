@@ -43,9 +43,8 @@ function getRankIcon(rank: number) {
   }
 }
 
-function getUserInitials(username: string, displayName?: string) {
-  const name = displayName || username
-  return name
+function getUserInitials(username: string) {
+  return username
     .split(' ')
     .map(part => part[0])
     .join('')
