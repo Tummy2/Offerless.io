@@ -12,20 +12,58 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Get user profiles with application counts
-    const { data: leaderboardData, error } = await supabase
-      .rpc('get_leaderboard_data')
+    // Get all profiles and their application counts
+    const { data: profiles, error: profilesError } = await supabase
+      .from('profiles')
+      .select(`
+        user_id,
+        username,
+        display_name,
+        applications (
+          id,
+          applied_at
+        )
+      `)
 
-    if (error) {
-      console.error('Database error:', error)
+    if (profilesError) {
+      console.error('Database error:', profilesError)
       return NextResponse.json(
         { error: 'Failed to fetch leaderboard' },
         { status: 500 }
       )
     }
 
+    if (!profiles) {
+      return NextResponse.json([])
+    }
+
+    // Process data to calculate totals and last 30 days
+    const now = new Date()
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+
+    const leaderboardData = profiles.map((profile: any) => {
+      const applications = profile.applications || []
+      const totalApplications = applications.length
+      
+      const applicationsLast30Days = applications.filter((app: any) => {
+        const appliedDate = new Date(app.applied_at)
+        return appliedDate >= thirtyDaysAgo
+      }).length
+
+      return {
+        user_id: profile.user_id,
+        username: profile.username,
+        display_name: profile.display_name,
+        total_applications: totalApplications,
+        applications_last_30_days: applicationsLast30Days
+      }
+    })
+
+    // Filter out users with no applications
+    const usersWithApplications = leaderboardData.filter(entry => entry.total_applications > 0)
+
     // Sort by total applications (desc), then by applications in last 30 days (desc) as tiebreaker
-    const sortedData = (leaderboardData || []).sort((a: any, b: any) => {
+    const sortedData = usersWithApplications.sort((a, b) => {
       if (b.total_applications !== a.total_applications) {
         return b.total_applications - a.total_applications
       }
@@ -34,7 +72,7 @@ export async function GET(request: NextRequest) {
     })
 
     // Add rank to each entry
-    const rankedData = sortedData.map((entry: any, index: number) => ({
+    const rankedData = sortedData.map((entry, index) => ({
       ...entry,
       rank: index + 1
     }))
