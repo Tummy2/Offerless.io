@@ -43,9 +43,8 @@ function getRankIcon(rank: number) {
   }
 }
 
-function getUserInitials(username: string, displayName?: string) {
-  const name = displayName || username
-  return name
+function getUserInitials(username: string) {
+  return username
     .split(' ')
     .map(part => part[0])
     .join('')
@@ -111,20 +110,15 @@ export function LeaderboardTable() {
               </TableCell>
               <TableCell>
                 <div className="flex items-center space-x-3">
-                  <Avatar className="h-8 w-8">
+                  <Avatar className="h-8 w-8 border-2 border-border">
                     <AvatarFallback className="text-sm">
-                      {getUserInitials(entry.username, entry.display_name)}
+                      {getUserInitials(entry.username)}
                     </AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-medium">
-                      {entry.display_name || entry.username}
+                      {entry.username}
                     </p>
-                    {entry.display_name && (
-                      <p className="text-sm text-muted-foreground">
-                        @{entry.username}
-                      </p>
-                    )}
                   </div>
                 </div>
               </TableCell>
