@@ -626,6 +626,13 @@ class OfferlessAPITester:
         self.test_leaderboard_unauthorized()
         self.test_me_stats_unauthorized()
         
+        # LEADERBOARD SPECIFIC TESTS
+        print("\n🏆 Testing Leaderboard Functionality:")
+        print("-" * 40)
+        self.test_leaderboard_api_structure()
+        self.test_leaderboard_ranking_logic_implementation()
+        self.test_leaderboard_data_structure()
+        
         # Auth endpoint tests
         self.test_auth_signout()
         
