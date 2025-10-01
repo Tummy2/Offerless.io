@@ -64,6 +64,13 @@ export function StatsCards() {
       color: 'text-blue-600',
     },
     {
+      title: 'Ghosted',
+      value: stats.ghosted,
+      icon: getStatusIcon('ghosted'),
+      description: 'No response',
+      color: 'text-gray-600',
+    },
+    {
       title: 'Interviewing',
       value: stats.interviewing,
       icon: getStatusIcon('interviewing'),
@@ -76,13 +83,6 @@ export function StatsCards() {
       icon: getStatusIcon('rejected'),
       description: 'Not selected',
       color: 'text-red-600',
-    },
-    {
-      title: 'Ghosted',
-      value: stats.ghosted,
-      icon: getStatusIcon('ghosted'),
-      description: 'No response',
-      color: 'text-gray-600',
     },
     {
       title: 'Offers',
