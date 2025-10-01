@@ -33,14 +33,13 @@ export default function SignUpPage() {
     setIsLoading(true)
     
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data: authData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: {
             username: data.username,
           },
-          emailRedirectTo: undefined, // Disable email confirmation
         },
       })
 
@@ -51,10 +50,18 @@ export default function SignUpPage() {
           variant: 'destructive',
         })
       } else {
-        toast({
-          title: 'Success',
-          description: 'Account created successfully! You can now sign in.',
-        })
+        // Check if user was created but needs confirmation
+        if (authData.user && !authData.user.email_confirmed_at) {
+          toast({
+            title: 'Account Created',
+            description: 'Account created successfully! You can now sign in immediately.',
+          })
+        } else {
+          toast({
+            title: 'Success',
+            description: 'Account created successfully! You can now sign in.',
+          })
+        }
         router.push('/signin')
       }
     } catch (error) {
