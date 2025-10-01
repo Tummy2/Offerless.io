@@ -78,6 +78,13 @@ export function StatsCards() {
       color: 'text-red-600',
     },
     {
+      title: 'Ghosted',
+      value: stats.ghosted,
+      icon: getStatusIcon('ghosted'),
+      description: 'No response',
+      color: 'text-gray-600',
+    },
+    {
       title: 'Offers',
       value: stats.offer,
       icon: getStatusIcon('offer'),
