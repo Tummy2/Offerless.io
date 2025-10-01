@@ -82,9 +82,6 @@ export const signUpSchema = z.object({
     .min(3, 'Username must be at least 3 characters')
     .max(24, 'Username must be less than 24 characters')
     .regex(/^[a-zA-Z0-9_-]+$/, 'Username can only contain letters, numbers, hyphens, and underscores'),
-  display_name: z.string()
-    .max(50, 'Display name must be less than 50 characters')
-    .optional(),
 })
 
 export type SignUpInput = z.infer<typeof signUpSchema>
