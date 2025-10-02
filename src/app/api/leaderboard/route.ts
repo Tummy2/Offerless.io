@@ -1,8 +1,9 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
+    // Use regular client for authentication check
     const supabase = createClient()
     const {
       data: { user },
@@ -12,8 +13,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    // Use service role client to bypass RLS policies for leaderboard data
+    const serviceSupabase = createServiceClient()
+    
     // Get all profiles and their application counts
-    const { data: profiles, error: profilesError } = await supabase
+    const { data: profiles, error: profilesError } = await serviceSupabase
       .from('profiles')
       .select(`
         id,
