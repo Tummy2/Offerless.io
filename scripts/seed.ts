@@ -64,7 +64,7 @@ async function createApplications(users: any[]) {
         company_url: `https://${company.toLowerCase().replace(' ', '')}.com/careers`,
         salary_amount: faker.datatype.boolean() ? faker.number.int({ min: 50000, max: 200000 }) : null,
         salary_type: faker.datatype.boolean() ? faker.helpers.arrayElement(['hourly', 'salary']) : null,
-        location_label: faker.datatype.boolean() ? faker.location.city() + ', ' + faker.location.stateAbbr() : null,
+        location_label: faker.datatype.boolean() ? faker.location.city() + ', ' + faker.location.state() : null,
         location_kind: faker.helpers.arrayElement(['onsite', 'remote']),
       }
       
