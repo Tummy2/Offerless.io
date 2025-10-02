@@ -669,9 +669,9 @@ export function LocationSearchInput({
               onClick={() => handleSuggestionClick(inputValue)}
               onMouseDown={(e) => e.preventDefault()}
             >
-              <span className="text-muted-foreground">Use "</span>
+              <span className="text-muted-foreground">Use &quot;</span>
               <span className="font-medium">{inputValue}</span>
-              <span className="text-muted-foreground">"</span>
+              <span className="text-muted-foreground">&quot;</span>
             </button>
           )}
         </div>
