@@ -53,7 +53,7 @@ export function NavBar() {
             </Link>
             <Link
               href="/leaderboard"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
+              className="transition-colors hover:text-foreground/80 text-foreground"
             >
               Leaderboard
             </Link>
